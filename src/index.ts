@@ -64,7 +64,14 @@ async function main(): Promise<void> {
     logger.error('Uncaught exception', err);
     void shutdown('uncaughtException', 1);
   });
-
+exec('npx tsx src/deploy-commands.ts', (err, stdout, stderr) => {
+  if (err) {
+    logger.error(`Command deployment error: ${err.message}`);
+    return;
+  }
+  logger.info(`Slash commands registered successfully!`);
+});
+  
   await client.login(config.token);
 }
 
