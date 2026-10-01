@@ -1,3 +1,4 @@
+import { exec } from 'child_process';
 import http from 'http';
 import 'dotenv/config';
 import { Client, GatewayIntentBits } from 'discord.js';
