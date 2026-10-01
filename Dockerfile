@@ -11,7 +11,7 @@ COPY package.json package-lock.json* ./
 RUN if [ -f package-lock.json ]; then npm ci; else npm install; fi
 COPY tsconfig.json tsconfig.build.json ./
 COPY src ./src
-RUN npm run build && npm run deploy-commands && npm prune --omit=dev
+RUN npm run build && npm prune --omit=dev
 
 # ---- runtime stage ----
 FROM node:20-bookworm-slim AS runtime
